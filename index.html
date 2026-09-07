@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min hemsida</title>
+</head>
+<body>
+    
+    <h1 id="header">Teambyggande</h1>
+
+    <br>
+
+    <pr>
+        bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+    </pr>
+
+    <button onclick="show(answer1)">1</button>
+    <button onclick="show(answer2)">2</button>
+    <button onclick="show(answer3)">3</button>
+    <button onclick="show(answer4)">4</button>
+    <button onclick="show(answer5)">5</button>
+
+    <p id="a1" hidden>Answer 1</p>
+    <p id="a2" hidden>Answer 2</p>
+    <p id="a3" hidden>Answer 3</p>
+    <p id="a4" hidden>Answer 4</p>
+    <br>
+    <img hidden id="a5" src="https://media.tenor.com/EN0vb0U7ChsAAAAM/virtual.gif" alt="GIF">
+<script>
+    let answer1 = document.getElementById("a1");
+    let answer2 = document.getElementById("a2");
+    let answer3 = document.getElementById("a3");
+    let answer4 = document.getElementById("a4");
+    let answer5 = document.getElementById("a5");
+
+    function show(answer) {
+
+        answer1.hidden = true;
+        answer2.hidden = true;
+        answer3.hidden = true;
+        answer4.hidden = true;
+        answer5.hidden = true;
+
+        answer.hidden = false;
+    }
+</script>
+</html>
