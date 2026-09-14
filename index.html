@@ -19,13 +19,18 @@
 
         <div class="header-controls">
           <label class="dark-mode-switch" for="dark-mode-toggle">
-            <span>Dark Mode</span>
+            <span class="dark-mode-control-text">Dark Mode</span>
             <span class="dark-mode-control">
               <input id="dark-mode-toggle" type="checkbox" />
               <span class="dark-mode-knob" aria-hidden="true"></span>
             </span>
           </label>
-          <button type="button">Sign in / up</button>
+          <button class="sign-in-button" type="button">Sign in / up</button>
+            <button class="menu-button" type="button" aria-label="Open menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
         </div>
       </div>
     </header>
@@ -38,16 +43,20 @@
 
             <p>
               We offer you a new generation of mobile banking.
-              Save, spend and manage money in your pocket.
+              Save, spend & manage money in your pocket.
             </p>
 
             <div class="app-buttons">
-              <a href="#">
-                <img src="images/app-store.svg" alt="Download on the App Store" />
+              <a class="app-download-button" href="#">
+                <img 
+                  src="images/appstore-light.png" 
+                  alt="Download on the App Store" />
               </a>
 
-              <a href="#">
-                <img src="images/google-play.svg" alt="Get it on Google Play" />
+              <a class="app-download-button" href="#">
+                <img 
+                src="images/googleplay-light.png" 
+                alt="Get it on Google Play" />
               </a>
             </div>
           </div>
@@ -181,34 +190,38 @@
       </section>
 
       <section class="how-it-works" aria-labelledby="how-title">
-        <div class="how-it-works-inner">
+        <div class="container how-it-works-inner">
           <h2 id="how-title">How Does It Work?</h2>
 
           <div class="how-it-works-gallery" aria-label="App walkthrough screens">
             <img
-              class="walkthrough-phone"
+              class="walkthrough-phone walkthrough-phone-budget"
               src="images/carousel-phone-3.png"
               alt="Budget screen in the Silicon app"
             />
 
             <img
-              class="walkthrough-phone walkthrough-phone-main"
+              class="walkthrough-phone walkthrough-phone-cards"
               src="images/carousel-phone-2.png"
               alt="Cards and transactions screen in the Silicon app"
             />
 
             <img
-              class="walkthrough-phone"
-              src="images/carousel-phone-1.png"
+              class="walkthrough-phone walkthrough-phone-transfer-mobile"
+              src="images/walkthrough-phone-mobile-transparent.png"
               alt="Transfer screen in the Silicon app"
             />
           </div>
 
           <div class="how-it-works-caption">
-            <h3>Latest transaction history</h3>
+            <h3>
+              Transfers to people from<br />
+              your contact list
+            </h3>
             <p>
-              Enim, et amet praesent pharetra. Mi non ante hendrerit amet sed.
-              Arcu sociis tristique quisque hac in consectetur condimentum.
+              Proin volutpat mollis egestas. Nam luctus facilisis<br />
+              ultrices. Pellentesque volutpat ligula est. Mattis<br />
+              fermentum, at nec lacus.
             </p>
           </div>
         </div>
@@ -365,7 +378,11 @@
         <div class="container newsletter-inner">
           <div class="newsletter-message">
             <img class="newsletter-icon" src="images/yellow-bell.png" alt="" />
-            <h2 id="newsletter-title">Subscribe to our newsletter to stay<br />informed about latest updates</h2>
+           <h2 id="newsletter-title">
+              Subscribe to our newsletter<span class="newsletter-title-desktop">
+                to stay<br/>informed about latest updates
+              </span>
+            </h2>
           </div>
           <form class="newsletter-form" action="#" method="post">
             <label class="sr-only" for="newsletter-email">Your Email</label>
