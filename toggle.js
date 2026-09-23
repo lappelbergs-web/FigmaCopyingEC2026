@@ -7,6 +7,7 @@
 
 const body = document.body;
 const themeToggleBtn = document.getElementById('themeToggle');
+const googlePlayBadge = document.getElementById('googlePlayBadge');
 const storageKey = 'theme';
 
 function getSavedTheme() {
@@ -19,6 +20,9 @@ function getSavedTheme() {
 }
 
 function applyTheme(theme, shouldSave = false) {
+  googlePlayBadge.src = theme === 'dark'
+    ? 'images/googleplay-dark.png'
+    : 'images/googleplay-light.png';
   body.setAttribute('data-theme', theme);
   themeToggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
 
