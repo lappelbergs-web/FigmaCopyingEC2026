@@ -77,8 +77,11 @@ En fullständig legend ligger högst upp i `styles.css`.
 
 Exakt Figma-proportion — webbläsaren räknar ut rätt höjd oavsett bredd. **[PETERS KODDEL].**
 
-### 2. Badges — en bild + CSS-bakgrundsruta (Leos lösning)
+### 2. Badges — App Store och Google Play använder OLIKA tekniker (uppdaterat av Leo)
 
+**Viktigt att veta:** de två badgesen löses numera på två olika sätt — inte konsekvent, men så här ser koden faktiskt ut just nu.
+
+**App Store — CSS-bakgrundsruta + filter, samma bildfil i båda lägena:**
 ```css
 .market-btn {
   display: inline-flex;
@@ -91,12 +94,21 @@ Exakt Figma-proportion — webbläsaren räknar ut rätt höjd oavsett bredd. **
 ```
 ```css
 /* dark-theme.css */
-body[data-theme="dark"] .market-btn { background: transparent; padding: 0; }
+body[data-theme="dark"] .market-btn { background: #FFFFFF; }
+body[data-theme="dark"] .market-btn:first-child .market-btn__img { filter: brightness(0); }
 ```
+I mörkt läge blir App Store-badgen nu en **vit ruta med svart ikon** (`filter: brightness(0)` gör bilden helt svart) — `:first-child` pekar specifikt på App Store-länken (den första av de två i `.market-btns`).
 
-**[LEOS KODDEL].** Samma bildfil (`appstore-light.png`/`googleplay-light.png`, vit ikon/text) i båda lägena. Bakgrundsrutan visas i ljust läge, tas bort i mörkt läge via `dark-theme.css` — texten står då direkt mot sidans mörka bakgrund, precis som Figma visar.
+⚠️ **Värt att dubbelkolla mot Figma innan redovisning:** det här är Leos senaste ändring, och den ger motsatt resultat mot vad vi tidigare verifierade skärmdump-mot-skärmdump (vit ikon, INGEN ruta, direkt mot sidans mörka bakgrund). Prata igenom det med Leo om vilken variant som faktiskt stämmer.
 
-**Bakgrund till lösningen:** ett tidigare försök använde två olika bildfiler (SVG för ljust läge, PNG för mörkt) som råkade ha olika inbördes bildproportioner (SVG ≈3.4:1, PNG ≈3.8:1) — det gjorde att badgen visuellt syntes olika stor mellan lägena trots identisk CSS-box. Genom att bara använda **en** bildfil försvinner problemet helt, eftersom det aldrig finns två olika proportioner att jämföra.
+**Google Play — JavaScript byter bildfil, inte CSS:**
+```css
+/* Ingen egen mörk-läges-regel för Google Play i dark-theme.css —
+   bildbytet sköts av toggle.js istället, se HTML-STRUKTUR.md. */
+```
+Google Play-badgen har istället fått ett `id="googlePlayBadge"` i HTML:en, och `toggle.js` byter dess `src`-attribut direkt mellan `googleplay-light.png` och `googleplay-dark.png` när temat växlas — ingen CSS-bakgrundsruta alls för den badgen. Se avsnittet om `toggle.js` i `HTML-STRUKTUR.md`.
+
+**Bakgrund till den ursprungliga lösningen (fortfarande giltig bakgrund, även om Google Play nu avviker från den):** ett tidigare försök använde två olika bildfiler (SVG för ljust läge, PNG för mörkt) som råkade ha olika inbördes bildproportioner — det gjorde att badgen visuellt syntes olika stor mellan lägena trots identisk CSS-box.
 
 ### 3. Hamburgermenyn och tema-knappen — JS-drivna knappar
 

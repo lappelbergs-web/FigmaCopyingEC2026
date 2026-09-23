@@ -58,15 +58,36 @@ En fullständig legend ligger direkt i `index.html`, precis efter `<body>`.
 
 Riktiga `<button>`-element, styrda via `id` av `toggle.js`/`hamburger.js`. **[GEMENSAM KODDEL]** — ersatte ett tidigare CSS-only checkbox-hack som krävde exakt HTML-ordning; JS hittar elementen via `id` oavsett var i koden de ligger.
 
-## Badges — App Store / Google Play (Leos lösning)
+## Badges — App Store / Google Play (nu två OLIKA tekniker — uppdaterat av Leo)
 
 ```html
 <a href="#" class="market-btn">
   <img src="images/appstore-light.png" alt="Download on the App Store" class="market-btn__img">
 </a>
+<a href="#" class="market-btn">
+  <img src="images/googleplay-light.png" alt="Get it on Google Play" class="market-btn__img" id="googlePlayBadge">
+</a>
 ```
 
-**[LEOS KODDEL].** Bara **en** bildfil per badge (samma i båda lägena, vit ikon/text på transparent bakgrund). Den mörka rutan bakom badgen i ljust läge är en CSS-bakgrundsfärg (se `CSS-STRUKTUR.md`), inte en del av bilden. Det ersatte ett tidigare försök med två olika bildfiler (SVG + PNG) som hade olika inbördes bildproportioner och därför syntes olika stora mellan lägena — ett problem den här lösningen eliminerar helt, eftersom det bara finns en bild att förhålla sig till.
+**App Store** styrs helt av CSS (bakgrundsruta + `filter`, samma bildfil i båda lägena) — se `CSS-STRUKTUR.md`.
+
+**Google Play** har istället fått ett `id="googlePlayBadge"`, och `toggle.js` byter dess `src` direkt via JavaScript:
+```js
+googlePlayBadge.src = theme === 'dark'
+  ? 'images/googleplay-dark.png'
+  : 'images/googleplay-light.png';
+```
+Kräver alltså **två** bildfiler för Google Play (`googleplay-light.png` och `googleplay-dark.png`), till skillnad från App Store som bara behöver en.
+
+⚠️ **Inkonsekvent, värt att lyfta i redovisningen:** de två badgesen löses nu på olika sätt (CSS vs. JavaScript) istället för med samma mönster. Bra exempel att nämna om ni pratar om utmaningar i grupparbetet — två personer löste liknande problem på olika sätt vid olika tillfällen.
+
+## Rubriknivå i Subscribe — `h3` → `h2` (uppdaterat av Leo)
+
+Subscribe-sektionens rubrik ändrades från `<h3>` till `<h2>`:
+```html
+<h2>Subscribe to our newsletter to stay informed about latest updates</h2>
+```
+En semantisk/SEO-korrigering — sektionsrubriker på samma nivå som "App Features", "Any questions?" osv. ska alla vara `<h2>`, inte hoppa till `<h3>` utan en mellanliggande `<h2>` i just den sektionen. Bra exempel att nämna under SEO-delen av redovisningen.
 
 ## FAQ-accordionen — `name="faq-group"` (Leos idé)
 
