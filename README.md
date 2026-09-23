@@ -50,7 +50,8 @@ Dubbelklicka på `index.html` i valfri webbläsare.
 | Dark mode kommer ihåg valet (`localStorage`) + respekterar systemets färgtema vid första besöket | Bättre användarupplevelse — sidan startar inte alltid i ljust läge |
 | FAQ är en riktig accordion (`name="faq-group"`) | Bara en fråga öppen åt gången, inbyggt i HTML5 — ingen extra kod |
 | "Learn more"-pilarna är text (`→`) istället för en bildfil | En bugg-källa mindre |
-| App Store/Google Play-badges: en bild + CSS-bakgrundsruta som togglas | Löste en synlig storleksskillnad mellan ljust/mörkt läge som två olika bildfiler orsakade |
+| App Store-badge: en bild + CSS-bakgrundsruta som togglas | Löste en synlig storleksskillnad mellan ljust/mörkt läge som två olika bildfiler orsakade |
+| Google Play-badge: JavaScript byter bildfil (`src`) mellan `googleplay-light.png`/`googleplay-dark.png` | Alternativ lösning på samma problem — se ⚠️ nedan för öppen fråga |
 
 ---
 
@@ -81,6 +82,8 @@ Källdesignen innehåller inte alla sektioner i alla skärmstorlekar — medvetn
 | Testimonials Section | ≤768px |
 | Logos / Brands | ≤480px |
 | Header-telefonerna | ≤480px |
+
+**Öppen fråga att stämma av med Leo:** App Store-badgens utseende i mörkt läge (vit ruta + svart ikon) avviker från den Figma-referens som tidigare verifierades (vit ikon, ingen ruta). De två badgesen löses dessutom nu på olika sätt (CSS för App Store, JavaScript för Google Play) — inte konsekvent, men fungerande. Se `CSS-STRUKTUR.md`/`HTML-STRUKTUR.md` för detaljer.
 
 ---
 
