@@ -119,6 +119,12 @@ Google Play-badgen har istället fått ett `id="googlePlayBadge"` i HTML:en, och
 
 **[GEMENSAM KODDEL].** Klasserna `.is-open` och attributet `data-theme` sätts av `hamburger.js`/`toggle.js` — CSS:en reagerar bara på dem, ingen `:checked`-selektor.
 
+**Bugfix (hamburgerikonen osynlig i mörkt läge):** de tre strecken hade en hårdkodad mörk färg (`var(--gray-900)`) i `styles.css`, utan någon egen regel i `dark-theme.css` — blev osynliga mot den mörka navbaren. Löst med:
+```css
+/* dark-theme.css */
+body[data-theme="dark"] .nav-toggle-btn span { background: #FFFFFF; }
+```
+
 ### 4. Ljus/mörk bildväxling utan JavaScript (loggor)
 
 ```css
